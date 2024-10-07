@@ -3,7 +3,7 @@ import { NavigationContainer } from "@react-navigation/native"
 import { createNativeStackNavigator } from "@react-navigation/native-stack"
 import UserList from "./views/UserList"
 import UserForm from "./views/UserForm"
-import { Button, Icon } from "react-native-elements"
+import { Button, Icon } from '@rneui/themed'
 
 const Stack = createNativeStackNavigator()
 

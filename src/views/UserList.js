@@ -20,9 +20,15 @@ export default props => {
         ])
     }
 
+    function goToUserForm(user) {
+        props.navigation.navigate('UserForm', user)
+    }
+
     function getUserItem({ item: user }) {
         return (
-            <ListItem bottomDivider >
+            <ListItem
+                bottomDivider
+                onPress={() => goToUserForm(user)} >
                 <Avatar
                     rounded
                     source={{ uri: user.avatarUrl }}
@@ -32,7 +38,7 @@ export default props => {
                     <ListItem.Subtitle>{user.email}</ListItem.Subtitle>
                 </ListItem.Content>
                 <ListItem.Chevron
-                    onPress={() => props.navigation.navigate('UserForm', user)}
+                    onPress={() => goToUserForm(user)}
                     iconProps={{ name: "edit" }}
                     iconStyle={{ fontSize: 25, color: "orange" }}
                 />

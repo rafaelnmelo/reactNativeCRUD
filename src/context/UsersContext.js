@@ -5,12 +5,22 @@ const initialState = { users }
 //inicializando contexto com objeto vazio
 const UsersContext = createContext({})
 
+const actions = {
+    deleteUser(state, action) {
+        const user = action.payload
+        return {
+            ...state,
+            users: state.users.filter(u => u.id !== user.id)
+        }
+    }
+}
+
 export default UsersContext
 export const UsersProvider = props => {
 
     function reducer(state, action) {
-        console.warn(action)
-        return state
+        const fn = actions[action.type]
+        return fn ? fn(state, action) : state
     }
 
     const [state, dispatch] = useReducer(reducer, initialState)

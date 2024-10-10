@@ -6,14 +6,18 @@ import UsersContext from "../context/UsersContext"
 export default props => {
     console.warn(Object.keys(props))
 
-    const { state } = useContext(UsersContext)
+    //acessando os usuários pelo Context
+    const { state, dispatch } = useContext(UsersContext)
 
     function confirmUserDeletion(user) {
         Alert.alert('Excluir Usuário', 'Deseja excluir o usuário?', [
             {
                 text: 'Sim',
                 onPress() {
-                    console.warn("Fake delete user " + user.id)
+                    dispatch({
+                        type: 'deleteUser',
+                        payload: user
+                    })
                 }
             },
             {

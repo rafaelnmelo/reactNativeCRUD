@@ -1,10 +1,13 @@
-import React from "react"
+import React, { useState } from "react"
 import { Text } from "react-native"
 
-export default props => {
+export default ({route, navigation}) => {
+    console.warn(Object.keys(route))
+
+    const [user, setUser] = useState(route.params ? route.params : {})
     return (
         <Text>
-            UserForm
+            {user.id}
         </Text>
     )
 }
